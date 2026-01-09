@@ -1,17 +1,7 @@
-/* Reset & base */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f5f7fa;
-  color: #333;
-  line-height: 1.6;
-  min-height: 100vh;
-  padding: 20px;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f5f5f5;
 }
 
 /* Header */
@@ -19,97 +9,73 @@ header {
   background: #ffcc00;
   padding: 20px;
   text-align: center;
-  font-size: 2.5rem;
-  font-weight: 900;
-  letter-spacing: 1px;
-  color: #3b2f00;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(255, 204, 0, 0.5);
-  margin-bottom: 30px;
+  font-size: 2em;
+  font-weight: bold;
 }
 
 .tm {
   font-size: 0.6em;
   vertical-align: super;
-  color: #3b2f00;
-  font-weight: 700;
 }
 
-/* Ads Container */
-.ads-container {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  max-width: 1024px;
-  margin: 0 auto 40px auto;
-  padding: 0 10px;
-}
-
-/* Ad Boxes */
-.ad-box {
-  background: linear-gradient(135deg, #ffcc00, #ffd94d);
-  border-radius: 12px;
-  padding: 25px 30px;
-  font-weight: 700;
-  color: #3b2f00;
-  font-size: 1.25rem;
-  text-align: center;
-  box-shadow: 0 4px 15px rgba(255, 204, 0, 0.4);
-  cursor: pointer;
-  transition: background 0.3s ease, box-shadow 0.3s ease;
-  user-select: none;
-  max-width: 1024px;
-  margin: 0 auto;
-}
-
-.ad-box:hover {
-  background: linear-gradient(135deg, #e6b800, #ffe066);
-  box-shadow: 0 6px 25px rgba(230, 184, 0, 0.7);
-  color: #2a2200;
-  text-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
-}
-
-.ad-box a {
-  color: inherit;
-  text-decoration: none;
-  display: inline-block;
-  margin-top: 6px;
-  font-weight: 900;
-}
-
-.ad-box a:hover {
-  text-decoration: underline;
-}
-
-/* Main content: items */
+/* Items */
 .items {
-  max-width: 1024px;
-  margin: 0 auto 50px auto;
   display: flex;
-  flex-wrap: wrap;
-  gap: 25px;
+  gap: 20px;
   justify-content: center;
-  padding: 0 10px;
+  padding: 20px;
+  flex-wrap: wrap;
 }
 
-/* Items (product cards) */
 .item {
   background: white;
-  width: 220px;
-  padding: 18px 15px;
-  border-radius: 10px;
+  padding: 15px;
+  width: 230px;
   text-align: center;
+  border-radius: 6px;
   cursor: pointer;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.12);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  font-weight: 700;
-  font-size: 1.05rem;
-  color: #2d2d2d;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
 }
 
 .item:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+  transform: scale(1.05);
+}
+
+/* Ads */
+.ads {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  padding: 30px 20px;
+  flex-wrap: wrap;
+  background: #fafafa;
+}
+
+.ad-box {
+  width: 280px;
+  background: white;
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  text-align: center;
+}
+
+.ad-box a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.ad-sponsor {
+  border-top: 5px solid #ffcc00;
+}
+
+.ad-yourbrand {
+  border-top: 5px solid #ccc;
+}
+
+.ad-cta {
+  font-weight: bold;
+  margin-top: 10px;
 }
 
 /* Modal */
@@ -117,155 +83,58 @@ header {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.75);
+  background: rgba(0,0,0,0.7);
   justify-content: center;
   align-items: center;
-  z-index: 1500;
-  padding: 20px;
 }
 
 .modal-content {
   background: white;
-  padding: 28px 30px 30px 30px;
-  border-radius: 14px;
+  padding: 20px;
+  border-radius: 6px;
+  max-width: 400px;
   width: 90%;
-  max-width: 460px;
   position: relative;
-  box-shadow: 0 6px 25px rgba(0,0,0,0.35);
-  font-weight: 600;
-  color: #222;
-  line-height: 1.4;
 }
 
-.modal-content h3 {
-  font-weight: 900;
-  margin-bottom: 15px;
-  color: #ffcc00;
-  text-shadow: 0 0 8px rgba(255, 204, 0, 0.8);
-}
-
-.modal-content p {
-  margin-bottom: 12px;
-  font-size: 1rem;
-}
-
-/* Close button */
 .close {
   position: absolute;
-  top: 14px;
-  left: 14px;
-  font-weight: 900;
-  font-size: 1.3rem;
-  color: #ff3300;
+  top: 10px;
+  left: 10px;
   cursor: pointer;
-  user-select: none;
-  transition: color 0.3s ease;
+  font-weight: bold;
 }
 
-.close:hover {
-  color: #cc0000;
-}
-
-/* Footer & Submission Form */
+/* Footer / Form */
 footer {
-  background: #f0f0f0;
-  padding: 30px 20px 35px 20px;
-  max-width: 1024px;
-  margin: 0 auto 50px auto;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  font-size: 0.9rem;
-  color: #444;
+  background: #eee;
+  padding: 30px 20px;
   text-align: center;
-  font-weight: 600;
 }
 
-footer h3 {
-  margin-bottom: 20px;
-  font-weight: 800;
-  color: #ffcc00;
-  text-shadow: 0 0 6px rgba(255, 204, 0, 0.6);
-}
-
-footer form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  max-width: 450px;
-  margin: 0 auto 20px auto;
-}
-
-input, textarea, button {
-  padding: 12px 15px;
-  border-radius: 8px;
-  border: 1.8px solid #ccc;
-  font-size: 1rem;
-  font-weight: 600;
-  transition: border-color 0.3s ease;
-  font-family: inherit;
-}
-
-input:focus, textarea:focus {
-  outline: none;
-  border-color: #ffcc00;
-  box-shadow: 0 0 8px #ffd633;
-  background: #fffbea;
+input,
+textarea,
+button {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
 }
 
 button {
   background: #ffcc00;
   border: none;
-  font-weight: 900;
+  font-weight: bold;
   cursor: pointer;
-  color: #3b2f00;
-  letter-spacing: 1.1px;
-  transition: background-color 0.3s ease;
 }
 
-button:hover {
-  background: #e6b800;
-  color: #2a2200;
+.legal {
+  font-size: 0.85em;
+  margin-top: 10px;
 }
 
-/* Thank you message */
-#thankYouMessage {
-  color: #228833;
-  font-weight: 700;
-  margin-top: 12px;
-}
-
-/* Legal text */
-footer p {
-  margin-top: 15px;
-  color: #555;
-  font-weight: 500;
-  font-size: 0.85rem;
-  line-height: 1.3;
-}
-
-/* Responsive */
-@media (max-width: 720px) {
-  header {
-    font-size: 2rem;
-    padding: 18px;
-  }
-
-  .ad-box {
-    font-size: 1.1rem;
-    padding: 18px 20px;
-  }
-
-  .items {
-    gap: 18px;
-  }
-
-  .item {
-    width: 90%;
-  }
-
-  footer form {
-    max-width: 100%;
-  }
-}
 
 
