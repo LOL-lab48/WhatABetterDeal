@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cheapify™</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f5f5f5; }
+  header { background: #ffcc00; padding: 20px; text-align: center; font-size: 2em; font-weight: bold; }
+  .items { display: flex; flex-wrap: wrap; justify-content: center; padding: 20px; gap: 20px; }
+  .item { background: white; padding: 15px; width: 220px; cursor: pointer; border-radius: 5px; transition: transform 0.2s; text-align: center; }
+  .item:hover { transform: scale(1.05); }
+  .modal { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.7); justify-content:center; align-items:center; }
+  .modal-content { background:white; padding:20px; border-radius:5px; width: 90%; max-width: 400px; position: relative; }
+  .close { position: absolute; top:10px; left:10px; cursor:pointer; font-size: 1.2em; }
+  footer { background: #eee; padding: 20px; text-align:center; font-size:0.9em; }
+  input, button { width: 100%; padding:10px; margin-bottom: 10px; border-radius:5px; border:1px solid #ccc; }
+  button { background: #ffcc00; border:none; font-weight:bold; cursor:pointer; }
+  .tm { font-size: 0.6em; vertical-align: super; }
+</style>
+</head>
+<body>
+
+<header>Cheapify<span class="tm">™</span></header>
+
+<!-- Items Section -->
+<div class="items">
+  <div class="item" onclick="openModal('modal1')">Very Large 20-Toddler Pool</div>
+</div>
+
+<!-- Modal -->
+<div class="modal" id="modal1">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal1')">X</span>
+    <h3>Very Large Pool for Around 20 Toddlers</h3>
+    <p>Waist-height pool suitable for around 20 toddlers. Bought for older kids, realized it wasn't high enough. Original eBay box, unused.</p>
+    <p>Price: $1200</p>
+    <p>Contact: <a href="mailto:gabe.karekinian@gmail.com">gabe.karekinian@gmail.com</a></p>
+  </div>
+</div>
+
+<!-- Footer & Submission Form -->
+<footer>
+  <h3>Submit Your Item</h3>
+  <form action="https://getform.io/f/bmdjjpwa" method="POST">
+    <input type="text" name="itemName" placeholder="Item Name" required>
+    <input type="text" name="itemPrice" placeholder="Price" required>
+    <input type="email" name="contactEmail" placeholder="Your Contact Email" required>
+    <button type="submit">Submit Item</button>
+  </form>
+  <div id="thankYouMessage" style="display:none; color: green; margin-top: 10px;">
+    Thank you! Your item has been submitted.
+  </div>
+
+  <p>⚠️ Shipping and handling are the responsibility of the lister. Cheapify<span class="tm">™</span> is not responsible for lost, damaged, or delayed items.</p>
+  <p>© 2026 Cheapify<span class="tm">™</span> is a trademark of © 2025 Xcelerate Xtreme Sports</p>
+</footer>
+
+<script>
+function openModal(id) {
+  document.getElementById(id).style.display='flex';
+}
+function closeModal(id) {
+  document.getElementById(id).style.display='none';
+}
+
+// Show thank you message after form submission
+document.querySelector("form").addEventListener("submit", function(){
+  setTimeout(()=>{document.getElementById('thankYouMessage').style.display='block';}, 200);
+});
+</script>
+
+</body>
+</html>
