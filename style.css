@@ -26,54 +26,53 @@ header {
   vertical-align: super;
 }
 
-/* Main content */
-.content {
+/* Main content layout */
+main.content {
   max-width: 1000px;
   margin: 20px auto;
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 20px;
   justify-content: center;
 }
 
-/* Items */
-.item {
+/* Item cards */
+.item, .ad {
   background: white;
-  width: 200px;
-  padding: 10px;
+  width: 220px;
+  padding: 15px;
   border-radius: 8px;
   text-align: center;
   cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.item:hover {
+.item:hover, .ad:hover {
   transform: translateY(-3px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-.item h4 {
-  margin: 10px 0 5px;
-  font-size: 1em;
-}
-
-.item .price {
-  font-weight: bold;
-  color: #ff6600;
-}
-
-.item img.item-image {
+.item-image {
   width: 100%;
-  height: auto;
+  height: 150px;
+  object-fit: cover;
   border-radius: 5px;
 }
 
-/* Ads */
-.item.ad {
-  background: linear-gradient(135deg, #ffcc66, #ff9966);
-  color: white;
+.price {
   font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Ads styling */
+.ad {
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  color: #000;
+}
+
+.ad h4 {
+  margin-bottom: 5px;
 }
 
 /* Modal */
@@ -102,7 +101,6 @@ header {
   left: 10px;
   cursor: pointer;
   font-weight: bold;
-  font-size: 1.2em;
 }
 
 /* Footer */
@@ -142,13 +140,12 @@ button {
 
 /* Mobile */
 @media (max-width: 600px) {
-  .content {
+  main.content {
     flex-direction: column;
     align-items: center;
   }
 
-  .item {
+  .item, .ad {
     width: 90%;
   }
 }
-
