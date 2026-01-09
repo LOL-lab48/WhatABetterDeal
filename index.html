@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cheapify™</title>
 
-<!-- Bing Webmaster verification -->
+<!-- Bing verification -->
 <meta name="msvalidate.01" content="5E25B9B09A4FA84EF3B2F96A6CBFAF68" />
 
 <link rel="stylesheet" href="style.css">
@@ -16,35 +16,49 @@
   Cheapify<span class="tm">™</span>
 </header>
 
-<!-- Items -->
-<div class="items">
-  <div class="item" onclick="openModal('modal1')">Very Large 20-Toddler Pool</div>
-  <div class="item" onclick="openModal('modal2')">Small Used 5-Year-Old Kids Bike</div>
+<div class="layout">
+
+  <!-- LEFT SIDEBAR -->
+  <aside class="sidebar left-sidebar">
+    <p class="sponsored-label">Sponsored</p>
+    <div class="ad-box ad-yourbrand">
+      <h3>Your Brand Here</h3>
+      <p>Promote your business to deal hunters.</p>
+      <p>
+        <a href="mailto:Gabe.karekinian@gmail.com">
+          Contact Gabe.karekinian@gmail.com
+        </a>
+      </p>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+    <div class="items">
+      <div class="item" onclick="openModal('modal1')">
+        Very Large 20-Toddler Pool
+      </div>
+      <div class="item" onclick="openModal('modal2')">
+        Small Used 5-Year-Old Kids Bike
+      </div>
+    </div>
+  </main>
+
+  <!-- RIGHT SIDEBAR -->
+  <aside class="sidebar right-sidebar">
+    <p class="sponsored-label">Sponsored</p>
+    <div class="ad-box ad-sponsor">
+      <a href="https://codepen.io/LOL12356/full/LENrLEw" target="_blank">
+        <h3>Xcelerate Xtreme Sports</h3>
+        <p>Push your limits with BMX, skate, and extreme sports challenges designed for real riders.</p>
+        <p class="ad-cta">Explore • Compete • Progress</p>
+      </a>
+    </div>
+  </aside>
+
 </div>
 
-<!-- Ads -->
-<section class="ads">
-  <div class="ad-box ad-sponsor">
-    <a href="https://codepen.io/LOL12356/full/LENrLEw" target="_blank">
-      <h3>Xcelerate Xtreme Sports</h3>
-      <p>Push your limits with BMX, skate, and extreme sports challenges built for real riders.</p>
-      <p class="ad-cta">Explore • Compete • Progress</p>
-    </a>
-  </div>
-
-  <div class="ad-box ad-yourbrand">
-    <h3>Your Brand Here</h3>
-    <p>Promote your brand to people actively browsing deals.</p>
-    <p><strong>Advertise with us</strong></p>
-    <p>
-      <a href="mailto:Gabe.karekinian@gmail.com">
-        Contact Gabe.karekinian@gmail.com
-      </a>
-    </p>
-  </div>
-</section>
-
-<!-- Modals -->
+<!-- MODALS -->
 <div class="modal" id="modal1">
   <div class="modal-content">
     <span class="close" onclick="closeModal('modal1')">X</span>
@@ -75,7 +89,7 @@
   </div>
 </div>
 
-<!-- Submit Form -->
+<!-- FOOTER -->
 <footer>
   <h3>Submit Your Item</h3>
 
@@ -84,15 +98,12 @@
     <input type="text" name="itemPrice" placeholder="Price" required>
     <textarea name="itemDescription" placeholder="Item Description" rows="4" required></textarea>
     <input type="email" name="contactEmail" placeholder="Your Contact Email" required>
-
-    <!-- Anti-spam honeypot -->
     <input type="text" name="_gotcha" style="display:none">
-
     <button type="submit">Submit Item</button>
   </form>
 
   <p class="legal">
-    ⚠ Shipping and handling are the responsibility of the lister. Cheapify<span class="tm">™</span> is not responsible for transactions, damages, or losses.
+    ⚠ Shipping and handling are the responsibility of the lister. Cheapify<span class="tm">™</span> is not responsible for transactions.
   </p>
   <p class="legal">
     © 2026 Cheapify<span class="tm">™</span> is a trademark of © 2025 Xcelerate Xtreme Sports
