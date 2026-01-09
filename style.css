@@ -1,14 +1,7 @@
-/* Reset & base */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 body {
+  margin: 0;
   font-family: Arial, sans-serif;
   background: #f5f5f5;
-  color: #333;
 }
 
 /* Header */
@@ -25,75 +18,79 @@ header {
   vertical-align: super;
 }
 
-/* Page layout */
-.page {
+/* Layout */
+.layout {
   display: flex;
-  min-height: 100vh;
-}
-
-/* Side columns */
-.side-column {
-  background: white;
-  width: 240px;
+  max-width: 1400px;
+  margin: 0 auto;
   padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  gap: 20px;
 }
 
-/* Ad blocks fill sidebar naturally */
-.ad-block {
+/* Sidebars */
+.sidebar {
+  width: 260px;
+  background: white;
+  padding: 15px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.sponsored-label {
+  font-size: 0.75em;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+/* Main content */
+.main-content {
   flex: 1;
-  padding: 20px 10px;
-  border-bottom: 1px solid #eee;
 }
 
-.ad-block:last-child {
-  border-bottom: none;
+/* Items */
+.items {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
-.ad-block a {
+.item {
+  background: white;
+  padding: 15px;
+  width: 230px;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+.item:hover {
+  transform: scale(1.05);
+}
+
+/* Ads */
+.ad-box {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.ad-box a {
   text-decoration: none;
   color: inherit;
 }
 
-.ad-block h3 {
-  margin-bottom: 10px;
-  color: #ff9900;
+.ad-sponsor {
+  border-top: 4px solid #ffcc00;
+  padding-top: 10px;
+}
+
+.ad-yourbrand {
+  border-top: 4px solid #ccc;
+  padding-top: 10px;
 }
 
 .ad-cta {
   font-weight: bold;
-  margin-top: 10px;
-}
-
-/* Main content */
-.content {
-  flex: 1;
-  padding: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  align-items: flex-start;
-  background: #f5f5f5;
-}
-
-/* Items (product cards) */
-.item {
-  background: white;
-  width: 220px;
-  padding: 15px;
-  border-radius: 8px;
-  text-align: center;
-  cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.item:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
 /* Modal */
@@ -104,13 +101,12 @@ header {
   background: rgba(0,0,0,0.7);
   justify-content: center;
   align-items: center;
-  z-index: 1000;
 }
 
 .modal-content {
   background: white;
   padding: 20px;
-  border-radius: 8px;
+  border-radius: 6px;
   width: 90%;
   max-width: 400px;
   position: relative;
@@ -121,29 +117,25 @@ header {
   top: 10px;
   left: 10px;
   cursor: pointer;
-  font-weight: bold;
 }
 
 /* Footer */
 footer {
   background: #eee;
-  padding: 25px 20px;
+  padding: 30px 20px;
   text-align: center;
-  font-size: 0.85em;
 }
 
-footer form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 15px;
-}
-
-input, textarea, button {
+input,
+textarea,
+button {
+  width: 100%;
+  max-width: 400px;
   padding: 10px;
+  margin-bottom: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
-  font-size: 0.95em;
+  box-sizing: border-box;
 }
 
 button {
@@ -153,37 +145,17 @@ button {
   cursor: pointer;
 }
 
-/* Legal text */
 .legal {
-  color: #555;
-  margin-top: 5px;
+  font-size: 0.85em;
 }
 
 /* Mobile */
 @media (max-width: 1000px) {
-  .page {
+  .layout {
     flex-direction: column;
   }
 
-  .side-column {
+  .sidebar {
     width: 100%;
-    flex-direction: row;
-    overflow-x: auto;
-    padding: 10px;
-  }
-
-  .ad-block {
-    flex: 0 0 200px;
-    border-bottom: none;
-    border-right: 1px solid #eee;
-    margin-right: 10px;
-  }
-
-  .ad-block:last-child {
-    border-right: none;
-  }
-
-  .content {
-    order: 2;
   }
 }
