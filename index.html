@@ -4,20 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cheapify™</title>
-<style>
-  body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f5f5f5; }
-  header { background: #ffcc00; padding: 20px; text-align: center; font-size: 2em; font-weight: bold; }
-  .items { display: flex; flex-wrap: wrap; justify-content: center; padding: 20px; gap: 20px; }
-  .item { background: white; padding: 15px; width: 220px; cursor: pointer; border-radius: 5px; transition: transform 0.2s; text-align: center; }
-  .item:hover { transform: scale(1.05); }
-  .modal { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.7); justify-content:center; align-items:center; }
-  .modal-content { background:white; padding:20px; border-radius:5px; width: 90%; max-width: 400px; position: relative; }
-  .close { position: absolute; top:10px; left:10px; cursor:pointer; font-size: 1.2em; }
-  footer { background: #eee; padding: 20px; text-align:center; font-size:0.9em; }
-  input, textarea, button { width: 100%; padding:10px; margin-bottom: 10px; border-radius:5px; border:1px solid #ccc; }
-  button { background: #ffcc00; border:none; font-weight:bold; cursor:pointer; }
-  .tm { font-size: 0.6em; vertical-align: super; }
-</style>
+
+<!-- Bing Webmaster verification -->
+<meta name="msvalidate.01" content="5E25B9B09A4FA84EF3B2F96A6CBFAF68" />
+
+<!-- Link external CSS -->
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -44,7 +36,7 @@
   <div class="modal-content">
     <span class="close" onclick="closeModal('modal2')">X</span>
     <h3>Small Used 5-Year-Old Kids Bike</h3>
-    <p>From when I was younger, I fixed the chain that came off, works properly but doesn't fit anyone.</p>
+    <p>Used kids bike. I fixed the chain that had come off when I was younger, and it now works properly. Currently too small to fit anyone, suitable for a young child. Comes with training wheels.</p>
     <p>Price: $50</p>
     <p>Contact: <a href="mailto:Gabe.karekinian@gmail.com">Gabe.karekinian@gmail.com</a></p>
   </div>
@@ -68,6 +60,7 @@
   <p>© 2026 Cheapify<span class="tm">™</span> is a trademark of © 2025 Xcelerate Xtreme Sports</p>
 </footer>
 
+<!-- JS -->
 <script>
 function openModal(id) {
   document.getElementById(id).style.display='flex';
