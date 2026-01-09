@@ -8,35 +8,32 @@
 <!-- Bing Webmaster verification -->
 <meta name="msvalidate.01" content="5E25B9B09A4FA84EF3B2F96A6CBFAF68" />
 
-<!-- Link external CSS -->
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>Cheapify<span class="tm">™</span></header>
 
-<!-- Ads Section -->
-<div class="ads-container">
-  <div class="ad-box">
-    Want Your Brand Here? Reach Out to <a href="mailto:Gabe.karekinian@gmail.com">Gabe.karekinian@gmail.com</a> Today!
+<!-- Items + Ads Section -->
+<main class="content">
+  
+  <!-- Ad Item 1 -->
+  <div class="item ad-item ad-brand" onclick="openModal('adModal1')">
+    Want Your Brand Here?
   </div>
-</div>
 
-<!-- Items Section -->
-<div class="items">
+  <!-- Product Items -->
   <div class="item" onclick="openModal('modal1')">Very Large 20-Toddler Pool</div>
   <div class="item" onclick="openModal('modal2')">Small Used 5-Year-Old Kids Bike</div>
-</div>
 
-<!-- Mid-page Ad -->
-<div class="ads-container">
-  <div class="ad-box">
-    Experience the thrill with Xcelerate Xtreme Sports — Push your limits, join the adventure! 
-    <a href="https://codepen.io/LOL12356/full/LENrLEw" target="_blank">Click Here</a>
+  <!-- Ad Item 2 -->
+  <div class="item ad-item ad-sports" onclick="openModal('adModal2')">
+    Xcelerate Xtreme Sports
   </div>
-</div>
 
-<!-- Modals -->
+</main>
+
+<!-- Product Modals -->
 <div class="modal" id="modal1">
   <div class="modal-content">
     <span class="close" onclick="closeModal('modal1')">X</span>
@@ -58,6 +55,25 @@
   </div>
 </div>
 
+<!-- Ad Modals -->
+<div class="modal" id="adModal1">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('adModal1')">X</span>
+    <h3>Want Your Brand Here?</h3>
+    <p>Reach out to <a href="mailto:Gabe.karekinian@gmail.com">Gabe.karekinian@gmail.com</a> today to have your brand featured!</p>
+    <a href="mailto:Gabe.karekinian@gmail.com" class="ad-link">Contact Now</a>
+  </div>
+</div>
+
+<div class="modal" id="adModal2">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('adModal2')">X</span>
+    <h3>Xcelerate Xtreme Sports</h3>
+    <p>Experience the thrill with Xcelerate Xtreme Sports — Push your limits, join the adventure!</p>
+    <a href="https://codepen.io/LOL12356/full/LENrLEw" target="_blank" class="ad-link">Learn More</a>
+  </div>
+</div>
+
 <!-- Footer & Submission Form -->
 <footer>
   <h3>Submit Your Item</h3>
@@ -76,21 +92,6 @@
   <p>© 2026 Cheapify<span class="tm">™</span> is a trademark of © 2025 Xcelerate Xtreme Sports</p>
 </footer>
 
-<!-- JS -->
-<script>
-function openModal(id) {
-  document.getElementById(id).style.display='flex';
-}
-function closeModal(id) {
-  document.getElementById(id).style.display='none';
-}
-
-// Show thank you message after form submission
-document.querySelector("form").addEventListener("submit", function(){
-  setTimeout(()=>{document.getElementById('thankYouMessage').style.display='block';}, 200);
-});
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
-
