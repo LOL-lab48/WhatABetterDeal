@@ -34,38 +34,39 @@ main.content {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  justify-content: flex-start; /* items start from left, ads inline */
+  justify-content: flex-start;
 }
 
-/* Items (product cards) */
-.item {
-  background: white;
-  flex: 0 1 220px; /* width with shrink/grow */
+/* Items & Ads styles */
+.item, .ad-item {
+  flex: 0 1 220px;
   padding: 15px;
   border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   text-align: center;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   transition: transform 0.2s, box-shadow 0.2s;
+  background: white;
+  color: #333;
+  user-select: none;
 }
 
-.item:hover {
+.item:hover, .ad-item:hover {
   transform: translateY(-3px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.25);
 }
 
-/* Ad Item Styles */
-.ad-item {
-  font-weight: bold;
-  color: white;
-}
-
+/* Ad color variations */
 .ad-brand {
   background: linear-gradient(135deg, #ff4b2b, #ff416c);
+  color: white;
+  font-weight: bold;
 }
 
 .ad-sports {
   background: linear-gradient(135deg, #1e90ff, #00bfff);
+  color: white;
+  font-weight: bold;
 }
 
 /* Modal */
@@ -123,23 +124,29 @@ footer {
 
 footer form {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 10px;
+  justify-content: center;
   margin-bottom: 15px;
 }
 
-input, textarea, button {
+footer input, footer textarea {
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
   font-size: 0.95em;
+  flex: 1 1 200px;
+  min-width: 120px;
 }
 
-button {
+footer button {
   background: #ffcc00;
   border: none;
   font-weight: bold;
   cursor: pointer;
+  padding: 10px 25px;
+  border-radius: 5px;
+  flex: 0 1 150px;
 }
 
 /* Legal text */
@@ -154,12 +161,16 @@ button {
     justify-content: center;
   }
 
-  .item {
+  .item, .ad-item {
     flex: 0 1 90%;
   }
+
+  footer form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  footer button {
+    flex: 1 1 auto;
+  }
 }
-
-
-
-
-
