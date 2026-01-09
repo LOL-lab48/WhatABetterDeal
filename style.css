@@ -1,188 +1,102 @@
-/* Reset & base */
+/* === Reset & Base Styles === */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background: #f5f5f5;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f5f7fa;
   color: #333;
-  line-height: 1.5;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px 10px 40px;
 }
 
-/* Header */
+/* === Header === */
 header {
   background: #ffcc00;
-  padding: 20px;
+  padding: 24px 30px;
+  border-radius: 12px;
+  font-size: 2.4rem;
+  font-weight: 900;
   text-align: center;
-  font-size: 2em;
-  font-weight: bold;
+  color: #3b2f00;
+  box-shadow: 0 6px 14px rgba(255, 204, 0, 0.5);
+  user-select: none;
+  width: 100%;
+  max-width: 1024px;
+  margin-bottom: 40px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .tm {
-  font-size: 0.6em;
+  font-size: 0.5em;
   vertical-align: super;
+  font-weight: 700;
+  color: #6a5600;
+  margin-left: 4px;
 }
 
-/* Main content */
+/* === Main Content Container === */
 main.content {
-  max-width: 1000px;
-  margin: 20px auto;
-  padding: 0 20px;
+  max-width: 1024px;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
   justify-content: center;
+  gap: 24px;
+  margin-bottom: 60px;
 }
 
-/* Items (product cards) */
+/* === Product Items (Cards) === */
 .item {
-  background: white;
-  width: 220px;
-  padding: 15px;
-  border-radius: 8px;
+  background: #fff;
+  width: 240px;
+  padding: 20px 18px;
+  border-radius: 14px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
   text-align: center;
+  font-weight: 600;
+  font-size: 1.1rem;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
 }
 
-.item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+.item:hover,
+.item:focus {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+  outline: none;
 }
 
-/* Modals */
+/* === Modal Styles === */
 .modal {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.7);
+  background: rgba(20, 20, 20, 0.75);
+  backdrop-filter: blur(5px);
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 1200;
+  padding: 20px;
 }
 
 .modal-content {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  width: 90%;
-  max-width: 400px;
-  position: relative;
-  max-height: 90vh;
-  overflow-y: auto;
-}
-
-.close {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.modal-image {
+  background: #fff;
+  border-radius: 12px;
   width: 100%;
-  max-height: 200px;
-  object-fit: contain;
-  margin: 10px 0;
-  border-radius: 5px;
-}
+  max-width: 420px;
+  padding: 28px
 
-/* Footer */
-footer {
-  background: #eee;
-  padding: 25px 20px;
-  text-align: center;
-  font-size: 0.85em;
-}
-
-footer form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 15px;
-}
-
-footer form input,
-footer form textarea,
-footer form button {
-  width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 0.95em;
-}
-
-footer form button {
-  background: #ffcc00;
-  border: none;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-/* Thank you message */
-#thankYouMessage {
-  color: green;
-  margin-top: 10px;
-}
-
-/* Ads Section */
-.ads {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.ad {
-  flex: 1 1 300px;
-  background: #ffcc00;
-  padding: 15px;
-  border-radius: 8px;
-  font-weight: bold;
-  color: #333;
-  cursor: pointer;
-  user-select: none;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-}
-
-.ad:hover {
-  background-color: #e6b800;
-}
-
-.ad-sports {
-  background: #004080;
-  color: #fff;
-}
-
-.ad-sports:hover {
-  background-color: #003366;
-}
-
-/* Legal text */
-.legal {
-  color: #555;
-  margin-top: 5px;
-}
-
-/* Mobile */
-@media (max-width: 600px) {
-  main.content {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .item {
-    width: 90%;
-  }
-
-  .ads {
-    flex-direction: column;
-  }
-}
