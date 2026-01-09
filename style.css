@@ -1,7 +1,15 @@
+/* Reset & base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: Arial, sans-serif;
-  margin: 0;
   background: #f5f5f5;
+  color: #333;
+  line-height: 1.5;
 }
 
 /* Header */
@@ -18,64 +26,46 @@ header {
   vertical-align: super;
 }
 
-/* Items */
-.items {
+/* Main content */
+main.content {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 0 20px;
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
-  padding: 20px;
-  flex-wrap: wrap;
 }
 
+/* Items (product cards) */
 .item {
   background: white;
+  width: 220px;
   padding: 15px;
-  width: 230px;
+  border-radius: 8px;
   text-align: center;
-  border-radius: 6px;
   cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .item:hover {
-  transform: scale(1.05);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
 }
 
-/* Ads */
-.ads {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  padding: 30px 20px;
-  flex-wrap: wrap;
-  background: #fafafa;
-}
-
-.ad-box {
-  width: 280px;
-  background: white;
-  padding: 20px;
-  border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  text-align: center;
-}
-
-.ad-box a {
-  text-decoration: none;
-  color: inherit;
-}
-
-.ad-sponsor {
-  border-top: 5px solid #ffcc00;
-}
-
-.ad-yourbrand {
-  border-top: 5px solid #ccc;
-}
-
-.ad-cta {
+/* Ad Item Styles */
+.ad-item {
   font-weight: bold;
-  margin-top: 10px;
+  color: white;
+}
+
+.ad-brand {
+  background: linear-gradient(135deg, #ff4b2b, #ff416c);
+}
+
+.ad-sports {
+  background: linear-gradient(135deg, #1e90ff, #00bfff);
 }
 
 /* Modal */
@@ -86,15 +76,17 @@ header {
   background: rgba(0,0,0,0.7);
   justify-content: center;
   align-items: center;
+  z-index: 1000;
 }
 
 .modal-content {
   background: white;
   padding: 20px;
-  border-radius: 6px;
-  max-width: 400px;
+  border-radius: 8px;
   width: 90%;
+  max-width: 400px;
   position: relative;
+  text-align: center;
 }
 
 .close {
@@ -105,23 +97,42 @@ header {
   font-weight: bold;
 }
 
-/* Footer / Form */
-footer {
-  background: #eee;
-  padding: 30px 20px;
-  text-align: center;
+/* Ad link inside modal */
+.ad-link {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 15px;
+  background: #ffcc00;
+  color: #333;
+  font-weight: bold;
+  border-radius: 5px;
+  text-decoration: none;
 }
 
-input,
-textarea,
-button {
-  width: 100%;
-  max-width: 400px;
+.ad-link:hover {
+  background: #ffc000;
+}
+
+/* Footer */
+footer {
+  background: #eee;
+  padding: 25px 20px;
+  text-align: center;
+  font-size: 0.85em;
+}
+
+footer form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+input, textarea, button {
   padding: 10px;
-  margin-bottom: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
-  box-sizing: border-box;
+  font-size: 0.95em;
 }
 
 button {
@@ -131,10 +142,24 @@ button {
   cursor: pointer;
 }
 
+/* Legal text */
 .legal {
-  font-size: 0.85em;
-  margin-top: 10px;
+  color: #555;
+  margin-top: 5px;
 }
+
+/* Mobile */
+@media (max-width: 600px) {
+  main.content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .item {
+    width: 90%;
+  }
+}
+
 
 
 
