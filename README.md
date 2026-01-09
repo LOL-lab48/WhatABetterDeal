@@ -1,2 +1,2 @@
-# Cheapify
-Buy, sell, and discover cheap deals with Cheapify™.
+# WhatABetterDeal™
+A simple community marketplace where people list items cheaply and connect directly.
