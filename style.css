@@ -19,6 +19,10 @@ header {
   text-align: center;
   font-size: 2em;
   font-weight: bold;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .tm {
@@ -26,47 +30,77 @@ header {
   vertical-align: super;
 }
 
-/* Main content */
-main.content {
-  max-width: 1000px;
-  margin: 20px auto;
+/* Main wrapper for items and ads */
+.content-wrapper {
+  max-width: 1200px;
+  margin: 20px auto 40px;
   padding: 0 20px;
+}
+
+/* Flex container holding ads + items side by side */
+.items-ads-wrapper {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Ads container: stacked ads in a column */
+.ads-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 260px;
+}
+
+/* Items container: flex-wrap to allow items to wrap but not ads */
+.items {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  flex: 1 1 700px;
   justify-content: flex-start;
 }
 
-/* Items & Ads styles */
-.item, .ad-item {
-  flex: 0 1 220px;
+/* Shared styling for items and ads */
+.item {
+  background: white;
   padding: 15px;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   text-align: center;
   cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   transition: transform 0.2s, box-shadow 0.2s;
-  background: white;
-  color: #333;
   user-select: none;
 }
 
-.item:hover, .ad-item:hover {
+.item:hover {
   transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-/* Ad color variations */
-.ad-brand {
-  background: linear-gradient(135deg, #ff4b2b, #ff416c);
-  color: white;
-  font-weight: bold;
+/* Item specific size */
+.item:not(.ad) {
+  width: 220px;
 }
 
-.ad-sports {
-  background: linear-gradient(135deg, #1e90ff, #00bfff);
-  color: white;
-  font-weight: bold;
+/* Ad specific size */
+.ad {
+  width: 100%;
+  font-weight: 600;
+  background: linear-gradient(135deg, #ff9a00 0%, #ffcc00 100%);
+  color: #2b2b2b;
+  box-shadow: 0 4px 10px rgba(255, 170, 0, 0.3);
+  font-size: 1em;
+  padding: 20px;
+  border: 2px solid #ffaa00;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.ad:hover {
+  background: linear-gradient(135deg, #ffcc00 0%, #ff9a00 100%);
 }
 
 /* Modal */
@@ -87,7 +121,11 @@ main.content {
   width: 90%;
   max-width: 400px;
   position: relative;
-  text-align: center;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+.ad-modal-content {
+  border: 3px solid #ffaa00;
 }
 
 .close {
@@ -96,22 +134,15 @@ main.content {
   left: 10px;
   cursor: pointer;
   font-weight: bold;
+  font-size: 1.2em;
 }
 
-/* Ad link inside modal */
-.ad-link {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 10px 15px;
-  background: #ffcc00;
-  color: #333;
-  font-weight: bold;
-  border-radius: 5px;
-  text-decoration: none;
-}
-
-.ad-link:hover {
-  background: #ffc000;
+/* Image in bike modal */
+.item-image {
+  width: 100%;
+  border-radius: 6px;
+  margin: 10px 0;
+  object-fit: contain;
 }
 
 /* Footer */
@@ -119,24 +150,36 @@ footer {
   background: #eee;
   padding: 25px 20px;
   text-align: center;
-  font-size: 0.85em;
+  font-size: 0.9em;
+  max-width: 1000px;
+  margin: 0 auto 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
+/* Form styling */
 footer form {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 15px;
   justify-content: center;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
-footer input, footer textarea {
+footer input,
+footer textarea {
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
-  font-size: 0.95em;
+  font-size: 1em;
   flex: 1 1 200px;
-  min-width: 120px;
+  min-width: 150px;
+  resize: vertical;
+}
+
+footer textarea {
+  max-width: 500px;
+  min-height: 70px;
 }
 
 footer button {
@@ -144,33 +187,37 @@ footer button {
   border: none;
   font-weight: bold;
   cursor: pointer;
-  padding: 10px 25px;
-  border-radius: 5px;
-  flex: 0 1 150px;
+  padding: 12px 25px;
+  flex: 1 1 150px;
+  min-width: 120px;
+  transition: background-color 0.3s ease;
+}
+
+footer button:hover {
+  background: #e6b800;
 }
 
 /* Legal text */
-.legal {
+footer p {
   color: #555;
   margin-top: 5px;
 }
 
-/* Mobile */
-@media (max-width: 600px) {
-  main.content {
+/* Responsive */
+@media (max-width: 850px) {
+  .items-ads-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ads-wrapper,
+  .items {
+    width: 100%;
     justify-content: center;
   }
 
-  .item, .ad-item {
-    flex: 0 1 90%;
-  }
-
-  footer form {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  footer button {
-    flex: 1 1 auto;
+  .ad,
+  .item:not(.ad) {
+    width: 260px;
   }
 }
