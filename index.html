@@ -8,55 +8,27 @@
 <!-- Bing Webmaster verification -->
 <meta name="msvalidate.01" content="5E25B9B09A4FA84EF3B2F96A6CBFAF68" />
 
+<!-- Link external CSS -->
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
-  Cheapify<span class="tm">™</span>
-</header>
+<header>Cheapify<span class="tm">™</span></header>
 
-<!-- Items -->
+<!-- Items Section -->
 <div class="items">
   <div class="item" onclick="openModal('modal1')">Very Large 20-Toddler Pool</div>
   <div class="item" onclick="openModal('modal2')">Small Used 5-Year-Old Kids Bike</div>
 </div>
-
-<!-- Ads -->
-<section class="ads">
-  <div class="ad-box ad-sponsor">
-    <a href="https://codepen.io/LOL12356/full/LENrLEw" target="_blank">
-      <h3>Xcelerate Xtreme Sports</h3>
-      <p>Push your limits with BMX, skate, and extreme sports challenges built for real riders.</p>
-      <p class="ad-cta">Explore • Compete • Progress</p>
-    </a>
-  </div>
-
-  <div class="ad-box ad-yourbrand">
-    <h3>Your Brand Here</h3>
-    <p>Promote your brand to people actively browsing deals.</p>
-    <p><strong>Advertise with us</strong></p>
-    <p>
-      <a href="mailto:Gabe.karekinian@gmail.com">
-        Contact Gabe.karekinian@gmail.com
-      </a>
-    </p>
-  </div>
-</section>
 
 <!-- Modals -->
 <div class="modal" id="modal1">
   <div class="modal-content">
     <span class="close" onclick="closeModal('modal1')">X</span>
     <h3>Very Large Pool for Around 20 Toddlers</h3>
-    <p>Waist-height pool suitable for around 20 toddlers. Bought for older kids but was not high enough. Original eBay box, unused.</p>
-    <p><strong>Price:</strong> $1200</p>
-    <p>
-      Contact:
-      <a href="mailto:gabe.karekinian@gmail.com">
-        gabe.karekinian@gmail.com
-      </a>
-    </p>
+    <p>Waist-height pool suitable for around 20 toddlers. Bought for older kids, realized it wasn't high enough. Original eBay box, unused.</p>
+    <p>Price: $1200</p>
+    <p>Contact: <a href="mailto:gabe.karekinian@gmail.com">gabe.karekinian@gmail.com</a></p>
   </div>
 </div>
 
@@ -65,47 +37,42 @@
     <span class="close" onclick="closeModal('modal2')">X</span>
     <h3>Small Used 5-Year-Old Kids Bike</h3>
     <p>Used kids bike. I fixed the chain that had come off when I was younger, and it now works properly. Currently too small to fit anyone, suitable for a young child. Comes with training wheels.</p>
-    <p><strong>Price:</strong> $50</p>
-    <p>
-      Contact:
-      <a href="mailto:Gabe.karekinian@gmail.com">
-        Gabe.karekinian@gmail.com
-      </a>
-    </p>
+    <p>Price: $50</p>
+    <p>Contact: <a href="mailto:Gabe.karekinian@gmail.com">Gabe.karekinian@gmail.com</a></p>
   </div>
 </div>
 
-<!-- Submit Form -->
+<!-- Footer & Submission Form -->
 <footer>
   <h3>Submit Your Item</h3>
-
   <form action="https://getform.io/f/bmdjjpwa" method="POST">
     <input type="text" name="itemName" placeholder="Item Name" required>
     <input type="text" name="itemPrice" placeholder="Price" required>
     <textarea name="itemDescription" placeholder="Item Description" rows="4" required></textarea>
     <input type="email" name="contactEmail" placeholder="Your Contact Email" required>
-
-    <!-- Anti-spam honeypot -->
-    <input type="text" name="_gotcha" style="display:none">
-
     <button type="submit">Submit Item</button>
   </form>
+  <div id="thankYouMessage" style="display:none; color: green; margin-top: 10px;">
+    Thank you! Your item has been submitted.
+  </div>
 
-  <p class="legal">
-    ⚠ Shipping and handling are the responsibility of the lister. Cheapify<span class="tm">™</span> is not responsible for transactions, damages, or losses.
-  </p>
-  <p class="legal">
-    © 2026 Cheapify<span class="tm">™</span> is a trademark of © 2025 Xcelerate Xtreme Sports
-  </p>
+  <p>⚠️ Shipping and handling are the responsibility of the lister. Cheapify<span class="tm">™</span> is not responsible for lost, damaged, or delayed items.</p>
+  <p>© 2026 Cheapify<span class="tm">™</span> is a trademark of © 2025 Xcelerate Xtreme Sports</p>
 </footer>
 
+<!-- JS -->
 <script>
 function openModal(id) {
-  document.getElementById(id).style.display = "flex";
+  document.getElementById(id).style.display='flex';
 }
 function closeModal(id) {
-  document.getElementById(id).style.display = "none";
+  document.getElementById(id).style.display='none';
 }
+
+// Show thank you message after form submission
+document.querySelector("form").addEventListener("submit", function(){
+  setTimeout(()=>{document.getElementById('thankYouMessage').style.display='block';}, 200);
+});
 </script>
 
 </body>
