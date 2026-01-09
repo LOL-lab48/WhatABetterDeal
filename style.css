@@ -18,33 +18,32 @@ header {
   vertical-align: super;
 }
 
-/* Layout */
-.layout {
-  display: flex;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 20px;
-  gap: 20px;
+/* Page layout */
+.page {
+  display: grid;
+  grid-template-columns: 240px 1fr 240px;
+  min-height: 100vh;
 }
 
-/* Sidebars */
-.sidebar {
-  width: 260px;
+/* Side columns */
+.side-column {
   background: white;
-  padding: 15px;
-  border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 20px;
 }
 
-.sponsored-label {
-  font-size: 0.75em;
-  color: #666;
-  margin-bottom: 10px;
+/* Ad blocks fill naturally */
+.ad-block {
+  padding: 20px 0;
+}
+
+.ad-block a {
+  text-decoration: none;
+  color: inherit;
 }
 
 /* Main content */
-.main-content {
-  flex: 1;
+.content {
+  padding: 20px;
 }
 
 /* Items */
@@ -66,31 +65,6 @@ header {
 
 .item:hover {
   transform: scale(1.05);
-}
-
-/* Ads */
-.ad-box {
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.ad-box a {
-  text-decoration: none;
-  color: inherit;
-}
-
-.ad-sponsor {
-  border-top: 4px solid #ffcc00;
-  padding-top: 10px;
-}
-
-.ad-yourbrand {
-  border-top: 4px solid #ccc;
-  padding-top: 10px;
-}
-
-.ad-cta {
-  font-weight: bold;
 }
 
 /* Modal */
@@ -122,27 +96,8 @@ header {
 /* Footer */
 footer {
   background: #eee;
-  padding: 30px 20px;
+  padding: 20px;
   text-align: center;
-}
-
-input,
-textarea,
-button {
-  width: 100%;
-  max-width: 400px;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
-
-button {
-  background: #ffcc00;
-  border: none;
-  font-weight: bold;
-  cursor: pointer;
 }
 
 .legal {
@@ -150,12 +105,16 @@ button {
 }
 
 /* Mobile */
-@media (max-width: 1000px) {
-  .layout {
-    flex-direction: column;
+@media (max-width: 900px) {
+  .page {
+    grid-template-columns: 1fr;
   }
 
-  .sidebar {
-    width: 100%;
+  .side-column {
+    order: 2;
+  }
+
+  .content {
+    order: 1;
   }
 }
