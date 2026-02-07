@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Automated redirect after 5 seconds -->
+    <meta http-equiv="refresh" content="5;url=https://lol-lab48.github.io/WhatABetterDeal/">
+    <title>Page Not Found | WhatABetterDeal</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding: 50px; background-color: #f4f4f4; }
+        h1 { color: #333; }
+        p { color: #666; }
+        .redirect-link { color: #007bff; text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Oops! Page Not Found</h1>
+    <p>We couldn't find what you were looking for.</p>
+    <p>You will be redirected to <a class="redirect-link" href="https://lol-lab48.github.io/WhatABetterDeal/">WhatABetterDeal</a> in 5 seconds...</p>
+    
+    <script>
+        // Immediate fallback redirect if meta refresh fails
+        setTimeout(function() {
+            window.location.href = "https://lol-lab48.github.io/WhatABetterDeal/";
+        }, 5000);
+    </script>
+</body>
+</html>
