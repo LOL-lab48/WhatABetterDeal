@@ -8,7 +8,7 @@ function openModal(id, slug) {
   if (!modal) return;
   modal.style.display = 'flex';
   // Use hash URL inside project folder
-  location.hash = "item-" + slug; // #item-pool or #item-kids-bike
+  location.hash = "item-" + slug; // item/pool or item/kids-bike
 }
 
 // Close modal and reset URL
