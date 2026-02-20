@@ -83,14 +83,14 @@
   </div>
 
   <!-- Ad 1 -->
-<div class="ad">
-  <a href="mailto:Gabe.karekinian@gmail.com" target="_blank" style="text-decoration: none; color: inherit;">
-    <h4>Want Your Brand Here?</h4>
-    <p>Reach out to Gabe.karekinian@gmail.com today to advertise!</p>
-  </a>
-</div>
+  <div class="ad">
+    <a href="mailto:Gabe.karekinian@gmail.com" target="_blank" style="text-decoration: none; color: inherit;">
+      <h4>Want Your Brand Here?</h4>
+      <p>Reach out to Gabe.karekinian@gmail.com today to advertise!</p>
+    </a>
+  </div>
 
-   <!-- Ad 2 -->
+  <!-- Ad 2 -->
   <div class="ad" onclick="window.open('https://lol-lab48.github.io/LockiGen/', '_blank');">
     <h4>Get safe, secure passwords instantly!</h4>
     <p>LockiGen</p>
@@ -128,47 +128,82 @@
 
 <!-- Full JS -->
 <script>
-// Open modal and update URL
-function openModal(id, slug) {
-  document.getElementById(id).style.display = 'flex';
-  history.pushState({ modal: id }, "", "/item/" + slug);
-}
-
-// Close modal and reset URL
-function closeModal(id) {
-  document.getElementById(id).style.display = 'none';
-  history.pushState({}, "", "/");
-}
-
-// Handle back/forward buttons
-window.onpopstate = function() {
-  document.querySelectorAll(".modal").forEach(modal => {
-    modal.style.display = "none";
-  });
-};
-
-// Open modal if visiting direct WhatABetterDeal/item/ITEM-NAME URL
-window.addEventListener("load", function() {
+  // Detect project base dynamically for GitHub Pages
   const pathParts = window.location.pathname.split("/");
-  if (pathParts.length >= 3 && pathParts[1] === "item") {
-    const slug = pathParts[2];
-    if (slug === "pool") {
-      document.getElementById("modal1").style.display = "flex";
-    } else if (slug === "kids-bike") {
-      document.getElementById("modal2").style.display = "flex";
-    }
-  }
-});
+  const projectBase = "/" + (pathParts[1] || ""); // "/WhatABetterDeal"
 
-// Show thank-you message after form submission (if any forms exist)
-document.querySelectorAll("form").forEach(form => {
-  form.addEventListener("submit", function(){
-    const message = form.querySelector("#thankYouMessage");
-    if(message){
-      setTimeout(()=>{ message.style.display = 'block'; }, 200);
+  // -----------------------------
+  // Open modal and update URL
+  // -----------------------------
+  function openModal(id, slug) {
+    const modal = document.getElementById(id);
+    if (!modal) return;
+    modal.style.display = 'flex';
+    // Hash URL inside project
+    history.pushState({ modal: id }, "", projectBase + "/#" + "item-" + slug);
+  }
+
+  // -----------------------------
+  // Close modal and reset URL
+  // -----------------------------
+  function closeModal(id) {
+    const modal = document.getElementById(id);
+    if (!modal) return;
+    modal.style.display = 'none';
+    history.pushState({}, "", projectBase + "/");
+  }
+
+  // -----------------------------
+  // Handle back/forward buttons (hashchange)
+  // -----------------------------
+  window.addEventListener("hashchange", function() {
+    const hash = location.hash;
+
+    document.querySelectorAll(".modal").forEach(modal => modal.style.display = 'none');
+
+    if (hash === "#item-pool") document.getElementById("modal1").style.display = 'flex';
+    else if (hash === "#item-kids-bike") document.getElementById("modal2").style.display = 'flex';
+  });
+
+  // -----------------------------
+  // Open modal if hash exists on page load
+  // -----------------------------
+  window.addEventListener("load", function() {
+    const hash = location.hash;
+    if (hash === "#item-pool") document.getElementById("modal1").style.display = 'flex';
+    else if (hash === "#item-kids-bike") document.getElementById("modal2").style.display = 'flex';
+  });
+
+  // -----------------------------
+  // Close modal when clicking outside content
+  // -----------------------------
+  document.querySelectorAll(".modal").forEach(modal => {
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) closeModal(modal.id);
+    });
+  });
+
+  // -----------------------------
+  // Close modal on ESC
+  // -----------------------------
+  document.addEventListener("keydown", function(e) {
+    if(e.key === "Escape") {
+      document.querySelectorAll(".modal").forEach(modal => modal.style.display = 'none');
+      history.pushState({}, "", projectBase + "/");
     }
   });
-});
+
+  // -----------------------------
+  // Show thank-you message after form submission
+  // -----------------------------
+  document.querySelectorAll("form").forEach(form => {
+    form.addEventListener("submit", function(e) {
+      setTimeout(() => {
+        const message = form.querySelector("#thankYouMessage");
+        if (message) message.style.display='block';
+      }, 200);
+    });
+  });
 </script>
 
 </body>
