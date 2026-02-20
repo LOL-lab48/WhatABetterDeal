@@ -30,6 +30,41 @@
     .nav-button:hover {
       background-color: #0056b3;
     }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 20px;
+      max-width: 500px;
+      width: 90%;
+      border-radius: 8px;
+      position: relative;
+    }
+
+    .close {
+      position: absolute;
+      right: 15px;
+      top: 10px;
+      font-size: 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .close:hover {
+      color: red;
+    }
   </style>
 </head>
 <body>
@@ -43,23 +78,27 @@
 
 <main class="content">
 
-  <div class="item" onclick="openModal('modal1')">
+  <!-- Item 1 -->
+  <div class="item" onclick="openModal('modal1','pool')">
     <img src="2bd3e9d3-b81c-4a5d-bb87-92f621cb2872.jpg" alt="Very Large Pool" class="item-image">
     <h4>OFF THE MARKET! Very Large 20-Toddler Pool</h4>
     <p class="price">$OFF THE MARKET</p>
   </div>
-  
-  <div class="item" onclick="openModal('modal2')">
+
+  <!-- Item 2 -->
+  <div class="item" onclick="openModal('modal2','kids-bike')">
     <img src="8ed28031-9fcb-4509-ba9a-0fc11f8681ac.jpg" alt="Small Used Kids Bike" class="item-image">
     <h4>Discount! Small Used 5-Year-Old Kids Bike</h4>
     <p class="price">$5̶0̶ SALE NOW $25</p>
   </div>
 
+  <!-- Ad 1 -->
   <div class="ad" onclick="window.location='mailto:Gabe.karekinian@gmail.com';">
     <h4>Want Your Brand Here?</h4>
     <p>Reach out to Gabe.karekinian@gmail.com today to advertise!</p>
   </div>
 
+  <!-- Ad 2 -->
   <div class="ad" onclick="window.open('https://lol-lab48.github.io/LockiGen/', '_blank');">
     <h4>Get safe, secure passwords instantly!</h4>
     <p>LockiGen</p>
@@ -67,18 +106,62 @@
 
 </main>
 
+<!-- Modal 1 -->
+<div class="modal" id="modal1">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal1')">✖</span>
+    <h3>OFF THE MARKET! Very Large Pool for Around 20 Toddlers</h3>
+    <p>Waist-height pool suitable for around 20 toddlers. Approximately 6m x 6m in size. Bought for older kids, realized it wasn't high enough. Original eBay box, unused.</p>
+    <p><strong>Price:</strong> $OFF THE MARKET</p>
+    <p>Contact: <a href="mailto:gabe.karekinian@gmail.com">gabe.karekinian@gmail.com</a></p>
+  </div>
+</div>
+
+<!-- Modal 2 -->
+<div class="modal" id="modal2">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal2')">✖</span>
+    <h3>DISCOUNT! Small Used 5-Year-Old Kids Bike</h3>
+    <p>This kids bike has been heavily used. I fixed the chain that came off when I was younger, and it now works properly. Currently too small to fit anyone older than 5 years.</p>
+    <p>To see bike photos go to https://tinyurl.com/WhatABetterDeal-Bike-Photo-PDF</p>
+    <p><strong>Price:</strong> $5̶0̶ Now $25!</p>
+    <p>Contact: <a href="mailto:gabe.karekinian@gmail.com">gabe.karekinian@gmail.com</a></p>
+  </div>
+</div>
+
 <footer>
   <p>⚠️ Shipping and handling are the responsibility of the lister. WhatABetterDeal<span class="tm">™</span> is not responsible for lost, damaged, or delayed items.</p>
   <p>© 2026 WhatABetterDeal<span class="tm">™</span> is a trademark of © 2025 Xcelerate Xtreme Sports</p>
 </footer>
 
 <script>
-function openModal(id) {
-  document.getElementById(id).style.display='flex';
+function openModal(id, slug) {
+  document.getElementById(id).style.display = 'flex';
+  history.pushState({ modal: id }, "", slug);
 }
+
 function closeModal(id) {
-  document.getElementById(id).style.display='none';
+  document.getElementById(id).style.display = 'none';
+  history.pushState({}, "", "./");
 }
+
+window.onpopstate = function() {
+  document.querySelectorAll(".modal").forEach(modal => {
+    modal.style.display = "none";
+  });
+};
+
+window.addEventListener("load", function() {
+  const path = window.location.pathname.split("/").pop();
+
+  if (path === "pool") {
+    document.getElementById("modal1").style.display = "flex";
+  }
+
+  if (path === "kids-bike") {
+    document.getElementById("modal2").style.display = "flex";
+  }
+});
 </script>
 
 </body>
