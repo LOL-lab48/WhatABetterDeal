@@ -147,7 +147,7 @@ window.onpopstate = function() {
   });
 };
 
-// Open modal if visiting direct /item/ITEM-NAME URL
+// Open modal if visiting direct WhatABetterDeal/item/ITEM-NAME URL
 window.addEventListener("load", function() {
   const pathParts = window.location.pathname.split("/");
   if (pathParts.length >= 3 && pathParts[1] === "item") {
