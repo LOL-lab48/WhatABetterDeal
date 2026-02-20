@@ -1,3 +1,7 @@
+// Determine base path dynamically
+const pathParts = window.location.pathname.split("/");
+const projectBase = "/" + (pathParts[1] || ""); // "/WhatABetterDeal"
+
 // -----------------------------
 // Open modal and change URL
 // -----------------------------
@@ -5,8 +9,8 @@ function openModal(id, slug) {
   const modal = document.getElementById(id);
   if (!modal) return;
   modal.style.display = 'flex';
-  // Use hash URL instead of /item/slug
-  location.hash = "item-" + slug;
+  // Include project base
+  history.pushState({ modal: id }, "", projectBase + "/#" + "item-" + slug);
 }
 
 // -----------------------------
@@ -16,10 +20,8 @@ function closeModal(id) {
   const modal = document.getElementById(id);
   if (!modal) return;
   modal.style.display = 'none';
-  // Clear the hash
-  if(location.hash.startsWith("#item-")) {
-    history.pushState("", document.title, window.location.pathname + window.location.search);
-  }
+  // Reset to homepage inside project
+  history.pushState({}, "", projectBase + "/");
 }
 
 // -----------------------------
@@ -28,17 +30,10 @@ function closeModal(id) {
 window.addEventListener("hashchange", function() {
   const hash = location.hash;
 
-  // Hide all modals first
-  document.querySelectorAll(".modal").forEach(modal => {
-    modal.style.display = 'none';
-  });
+  document.querySelectorAll(".modal").forEach(modal => modal.style.display = 'none');
 
-  // Show the modal based on hash
-  if (hash === "#item-pool") {
-    document.getElementById("modal1").style.display = 'flex';
-  } else if (hash === "#item-kids-bike") {
-    document.getElementById("modal2").style.display = 'flex';
-  }
+  if (hash === "#item-pool") document.getElementById("modal1").style.display = 'flex';
+  else if (hash === "#item-kids-bike") document.getElementById("modal2").style.display = 'flex';
 });
 
 // -----------------------------
@@ -46,11 +41,8 @@ window.addEventListener("hashchange", function() {
 // -----------------------------
 window.addEventListener("load", function() {
   const hash = location.hash;
-  if (hash === "#item-pool") {
-    document.getElementById("modal1").style.display = 'flex';
-  } else if (hash === "#item-kids-bike") {
-    document.getElementById("modal2").style.display = 'flex';
-  }
+  if (hash === "#item-pool") document.getElementById("modal1").style.display = 'flex';
+  else if (hash === "#item-kids-bike") document.getElementById("modal2").style.display = 'flex';
 });
 
 // -----------------------------
@@ -63,14 +55,12 @@ document.querySelectorAll(".modal").forEach(modal => {
 });
 
 // -----------------------------
-// Close modal when pressing ESC
+// Close modal on ESC
 // -----------------------------
 document.addEventListener("keydown", function(e) {
   if(e.key === "Escape") {
     document.querySelectorAll(".modal").forEach(modal => modal.style.display = 'none');
-    if(location.hash.startsWith("#item-")) {
-      history.pushState("", document.title, window.location.pathname + window.location.search);
-    }
+    history.pushState({}, "", projectBase + "/");
   }
 });
 
@@ -81,7 +71,7 @@ document.querySelectorAll("form").forEach(form => {
   form.addEventListener("submit", function(e) {
     setTimeout(() => {
       const message = form.querySelector("#thankYouMessage");
-      if (message) message.style.display = 'block';
+      if (message) message.style.display='block';
     }, 200);
   });
 });
