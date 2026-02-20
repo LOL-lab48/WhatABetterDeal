@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sell an Item - WhatABetterDeal</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .close-button {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 24px;
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+    }
+    .form-container {
+      max-width: 500px;
+      margin: 80px auto;
+    }
+  </style>
+</head>
+<body>
+
+<a href="index.html" class="close-button">✖</a>
+
+<div class="form-container">
+  <h2>Sell Your Item</h2>
+
+  <form action="https://getform.io/f/bmdjjpwa" method="POST">
+    <input type="text" name="itemName" placeholder="Item Name" required>
+    <input type="text" name="itemPrice" placeholder="Price" required>
+    <textarea name="itemDescription" placeholder="Item Description" rows="4" required></textarea>
+    <input type="email" name="contactEmail" placeholder="Your Contact Email" required>
+    <button type="submit">Submit Item</button>
+  </form>
+</div>
+
+</body>
+</html>
