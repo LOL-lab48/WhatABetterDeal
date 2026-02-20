@@ -11,11 +11,8 @@
   <link rel="stylesheet" href="style.css">
 
   <style>
-    .top-buttons {
-      text-align: center;
-      margin: 20px 0;
-    }
-
+    /* Top buttons */
+    .top-buttons { text-align: center; margin: 20px 0; }
     .nav-button {
       display: inline-block;
       padding: 10px 20px;
@@ -26,11 +23,9 @@
       margin: 5px;
       font-weight: bold;
     }
+    .nav-button:hover { background-color: #0056b3; }
 
-    .nav-button:hover {
-      background-color: #0056b3;
-    }
-
+    /* Modals */
     .modal {
       display: none;
       position: fixed;
@@ -43,7 +38,6 @@
       justify-content: center;
       align-items: center;
     }
-
     .modal-content {
       background: white;
       padding: 20px;
@@ -52,7 +46,6 @@
       border-radius: 8px;
       position: relative;
     }
-
     .close {
       position: absolute;
       right: 15px;
@@ -61,10 +54,7 @@
       cursor: pointer;
       font-weight: bold;
     }
-
-    .close:hover {
-      color: red;
-    }
+    .close:hover { color: red; }
   </style>
 </head>
 <body>
@@ -134,33 +124,48 @@
   <p>© 2026 WhatABetterDeal<span class="tm">™</span> is a trademark of © 2025 Xcelerate Xtreme Sports</p>
 </footer>
 
+<!-- Full JS -->
 <script>
+// Open modal and update URL
 function openModal(id, slug) {
   document.getElementById(id).style.display = 'flex';
-  history.pushState({ modal: id }, "", slug);
+  history.pushState({ modal: id }, "", "/item/" + slug);
 }
 
+// Close modal and reset URL
 function closeModal(id) {
   document.getElementById(id).style.display = 'none';
-  history.pushState({}, "", "./");
+  history.pushState({}, "", "/");
 }
 
+// Handle back/forward buttons
 window.onpopstate = function() {
   document.querySelectorAll(".modal").forEach(modal => {
     modal.style.display = "none";
   });
 };
 
+// Open modal if visiting direct /item/ITEM-NAME URL
 window.addEventListener("load", function() {
-  const path = window.location.pathname.split("/").pop();
-
-  if (path === "pool") {
-    document.getElementById("modal1").style.display = "flex";
+  const pathParts = window.location.pathname.split("/");
+  if (pathParts.length >= 3 && pathParts[1] === "item") {
+    const slug = pathParts[2];
+    if (slug === "pool") {
+      document.getElementById("modal1").style.display = "flex";
+    } else if (slug === "kids-bike") {
+      document.getElementById("modal2").style.display = "flex";
+    }
   }
+});
 
-  if (path === "kids-bike") {
-    document.getElementById("modal2").style.display = "flex";
-  }
+// Show thank-you message after form submission (if any forms exist)
+document.querySelectorAll("form").forEach(form => {
+  form.addEventListener("submit", function(){
+    const message = form.querySelector("#thankYouMessage");
+    if(message){
+      setTimeout(()=>{ message.style.display = 'block'; }, 200);
+    }
+  });
 });
 </script>
 
