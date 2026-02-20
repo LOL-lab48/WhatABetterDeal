@@ -32,8 +32,8 @@ window.addEventListener("hashchange", () => {
 // Open modal if hash exists on page load
 window.addEventListener("load", () => {
   const hash = location.hash;
-  if (hash === "#item-pool") document.getElementById("modal1").style.display = 'flex';
-  if (hash === "#item-kids-bike") document.getElementById("modal2").style.display = 'flex';
+  if (hash === "item/pool") document.getElementById("modal1").style.display = 'flex';
+  if (hash === "item/kids-bike") document.getElementById("modal2").style.display = 'flex';
 });
 
 // Close modal when clicking outside content
