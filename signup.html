@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign Up - WhatABetterDeal™</title>
-  <link rel="stylesheet" href="style.css">
+
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
+      background: linear-gradient(135deg, #f9f9f9, #eaeaea);
     }
 
     .close-button {
@@ -18,8 +18,9 @@
       right: 20px;
       font-size: 26px;
       text-decoration: none;
-      color: black;
+      color: #333;
       font-weight: bold;
+      transition: 0.3s;
     }
 
     .close-button:hover {
@@ -31,8 +32,8 @@
       margin: 100px auto;
       padding: 30px;
       background: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
     }
 
     h2 {
@@ -58,22 +59,28 @@
       border-radius: 6px;
     }
 
-    textarea {
-      height: 100px;
-      resize: vertical;
+    input:focus, textarea:focus {
+      border-color: #007bff;
+      outline: none;
     }
 
     button {
-      background-color: #007bff;
+      background: linear-gradient(135deg, #007bff, #0056b3);
       color: white;
       border: none;
       cursor: pointer;
       font-weight: bold;
-      transition: background 0.3s;
+      transition: 0.3s;
     }
 
     button:hover {
-      background-color: #0056b3;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 600px) {
+      .form-container {
+        margin: 60px 20px;
+      }
     }
   </style>
 </head>
@@ -85,16 +92,23 @@
     <h2>Create an Account</h2>
 
     <!-- Formspree Integration -->
-    <form action="https://formspree.io" method="POST">
+    <form action="https://formspree.io/f/meellbgj" method="POST">
         
         <label for="full-name">Full Name</label>
         <input type="text" id="full-name" name="name" placeholder="John Doe" required>
 
         <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" placeholder="john@example.com" required
+        <input type="email" id="email" name="email" placeholder="john@example.com" required>
 
-        <!-- Anti-Spam: Hidden honeypot field -->
+        <!-- Optional Message Field -->
+        <label for="message">Message (Optional)</label>
+        <textarea id="message" name="message" placeholder="Tell us what you're looking for..."></textarea>
+
+        <!-- Anti-Spam Honeypot -->
         <input type="text" name="_gotcha" style="display:none">
+
+        <!-- Redirect After Submit -->
+        <input type="hidden" name="_redirect" value="thankyou.html">
 
         <button type="submit">Sign Up</button>
     </form>
